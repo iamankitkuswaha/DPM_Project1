@@ -32,6 +32,8 @@ def uploader():
 @app.route("/imageGenerator",methods=['GET','POST'])
 def imageGenerator():
     generatedImgPath = "http://127.0.0.1:8080/"+"coinput2.png"
+    inputData = dict(request.form)
+    print(inputData)
     print(generatedImgPath)
     if request.method=='POST':
         print(generatedImgPath)
