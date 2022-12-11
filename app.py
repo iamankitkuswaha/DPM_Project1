@@ -8,7 +8,7 @@ from werkzeug.datastructures import  FileStorage
 
 app = Flask(__name__)
 # share = Share(app)
-app.config['UPLOAD_FOLDER'] = "C:\\Users\\ankit\\Desktop\\IIITD\\DPM\\DPM_Project1\\Input_Images"
+app.config['UPLOAD_FOLDER'] = "static"
 
 @app.route('/')
 def index():
