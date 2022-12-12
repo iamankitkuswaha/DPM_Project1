@@ -11,57 +11,62 @@
     <title>Style your image</title>
 </head>
 <body>
-    <div class="row" style="height:29vh;">
+    <div class="row griddiv">
         <div class="stylediv">
             <h1 class="styleheading">Style your Image </h1>
         </div>
     </div>
     
     <div class="row" style="height:70vh;">
-        <div class="col">
-            <div class="row"  style="background-color:rgb(255, 255, 255);height:55vh; align-items: center; justify-content: center;">
-                <form action="/uploader" method="post" id="contentImg-form" enctype="multipart/form-data" style="height: 70%;; width:80%; padding:20px;justify-content: center; ">  <!-- style="display: block; justify-content: space-around;" -->
-                    <div style="display: flex; justify-content: space-around; justify-items: center;">
+        <div class="col gridcol1">
+            <!-- <div class="row"  style="background-color:rgb(255, 255, 255);height:55vh; align-items: center; justify-content: center;"> -->
+
+                <!-- Select content image -->
+            <div>
+                <form action="/uploader" method="post" id="contentImg-form" enctype="multipart/form-data">
+                     <!-- style="display: flex; justify-content: space-around; justify-items: center;"-->
+                    <div>
+                        <div>
+                            <!-- <img src="{{contentImagePath}}" id="contentImgPreview" class="rounded" style="height: 200px; width: 150px; margin-left: 10px;" alt=""> -->
+                            <p style="margin-left: 30px;">{{content}}</p>
+                        </div>
                         <div>
                             <div>
-                                <img src="{{contentImagePath}}" id="contentImgPreview" class="rounded" style="height: 80px; width: 80px; margin-left: 30px;" alt="">
-                                <p style="margin-left: 30px;">{{content}}</p>
+                                <input type="file" name="contentImg" id="contentImg" class="file" accept="image/*" hidden>
+                                <label for="contentImg"  class="contentimg"><img src="{{contentImagePath}}" id="contentImgPreview" class="rounded" style="max-width: 290px; max-height: 300px;" alt="Select Content Image"></label>
                             </div>
-                            <div style="margin-top:20px;">
-                                <input type="file" name="contentImg" id="contentImg" class="file" accept="image/*" style="margin-top: 10px;" hidden>
-                                <label for="contentImg" class="files"><i class='bi bi-box-arrow-in-up'> </i>Content Image</label>
+                            <div>
                                 <button type="submit" class="btn btn-info btn-lg btn-block">Upload</button>
                             </div>
                         </div>
                     </div>
                     <h5 style="color: rgb(21, 128, 23);margin-top:5px;">{{status}}</h5>
                 </form>
-                <div>
-                    <form action="/imageGenerator" method="post" style="display: block; justify-content: center; justify-items: center;align-items: center; align-content: space-around;">
-                        <div style="display: flex; height:100%; width:100%;">
-                            <label for="style">Style</label>
-                        </div>
-                        <div style="display: flex; height:100%; width:100%;">
-                            <select name="style" id="style">
-                                <option value="select">Select a Style</option>
-                                <option value="monet">Monet</option>
-                                <option value="cezanne">Cezanne</option>
-                                <option value="vangogh">Vangogh</option>
-                                <option value="ukiyoe">Ukiyoe</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="submit" value="Submit" />
-                        </div>
-                    </form>
-                </div>
             </div>
+        <!-- Select Style -->
+            <div class="style">
+                <form action="/imageGenerator" method="post">
+                    <div >
+                        <select name="style" id="style" class="selectstyle">
+                            <option value="select">Select a Style</option>
+                            <option value="monet">Monet</option>
+                            <option value="cezanne">Cezanne</option>
+                            <option value="vangogh">Vangogh</option>
+                            <option value="ukiyoe">Ukiyoe</option>
+                        </select>
+                        <input type="submit" value="Submit"  class="submitbtn" />
+                    </div>
+                </form>
+            </div>
+            <!-- </div> -->
         </div>
-        <div class="col" style="background-color:rgb(255, 255, 255); align-items:center;justify-content: space-around;align-content:space-around;justify-items:center;">
-            <div style="display: flex;">   <!--margin-top: 10em;-->
-                <div class="generated-img">
-                    <a href="{{generatedImagePath}}" download="GeneratedImage">
-                        <img src="{{generatedImagePath}}" name = "generateImg" alt="Generated Image" >
+
+        <!-- Generated Image -->
+        <div class="col gridcol2" >
+            <div class="generated-img-btn">
+                <div>
+                    <a href="{{generatedImagePath}}" download="GeneratedImage"   class="generated-img">
+                        <img src="{{generatedImagePath}}" name = "generateImg" alt="Generated Image">
                     </a>
                 </div>
                 <div class="share-btn-container">
