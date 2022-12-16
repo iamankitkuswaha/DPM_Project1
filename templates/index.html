@@ -10,40 +10,39 @@
     <link rel="stylesheet" href="static/style1.css">
     <title>Style your image</title>
 </head>
-<body>
-    <div class="row griddiv">
-        <div class="stylediv">
-            <h1 class="styleheading">Style your Image </h1>
+<body style="background-color: #efeaea;">
+    <div class="container-fluid" style="background-color: rgb(226, 101, 101);">
+        <div class="row griddiv">
+            <div class="stylediv">
+                <h1 class="styleheading">Style your Image </h1>
+            </div>
         </div>
-    </div>
     
     <div class="row" style="height:70vh;">
-        <div class="col gridcol1">
-            <!-- <div class="row"  style="background-color:rgb(255, 255, 255);height:55vh; align-items: center; justify-content: center;"> -->
-
-                <!-- Select content image -->
-            <div>
+        <div class="col-4" style="background-color: aqua;"> <!-- gridcol1-->
+            <!-- <div> -->
                 <form action="/uploader" method="post" id="contentImg-form" enctype="multipart/form-data">
-                     <!-- style="display: flex; justify-content: space-around; justify-items: center;"-->
                     <div>
                         <div>
-                            <!-- <img src="{{contentImagePath}}" id="contentImgPreview" class="rounded" style="height: 200px; width: 150px; margin-left: 10px;" alt=""> -->
-                            <p style="margin-left: 30px;">{{content}}</p>
+                            <p>{{content}}</p>
                         </div>
                         <div>
                             <div>
                                 <input type="file" name="contentImg" id="contentImg" class="file" accept="image/*" hidden>
-                                <label for="contentImg"  class="contentimg"><img src="{{contentImagePath}}" id="contentImgPreview" class="rounded" style="max-width: 290px; max-height: 300px;" alt="Select Content Image"></label>
+                                <label for="contentImg"  class="contentimg"><img src="{{contentImagePath}}" id="contentImgPreview" class="rounded" style="width: 100%; min-height: 200px;" alt="Select Content Image"></label>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-info btn-lg btn-block">Upload</button>
+                                <button type="submit" class="btn btn-info btn-lg ">Upload</button>
                             </div>
                         </div>
                     </div>
                     <h5 style="color: rgb(21, 128, 23);margin-top:5px;">{{status}}</h5>
                 </form>
-            </div>
+            <!-- </div> -->
+        </div>  <!-- End of 1st column -->
+
         <!-- Select Style -->
+        <div class="col-4" style="background-color: aquamarine;  justify-items: center; align-items: center;"> <!-- gridcol1-->
             <div class="style">
                 <form action="/imageGenerator" method="post">
                     <div >
@@ -58,11 +57,37 @@
                     </div>
                 </form>
             </div>
-            <!-- </div> -->
-        </div>
+        </div>  <!-- End of 2nd column -->
+        <div class="col-4" style="background-color: bisque;"> <!--gridcol1-->
+            <div class="generated-img-btn">
+                <div>
+                    <a href="{{generatedImagePath}}" download="GeneratedImage"   class="generated-img">
+                        <img src="{{generatedImagePath}}" name = "generateImg" alt="Generated Image">
+                    </a>
+                </div>
+                <div class="share-btn-container">
+                    <a href="https://www.facebook.com/sharer.php?u=https://www.pexels.com/photo/building-among-red-trees-under-cloudy-sky-14674557/" class="facebook-btn">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/share?url={{generatedImagePath}}&text={{generatedImagePath}}" class="twitter-btn">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?url={{generatedImagePath}}&title={{generatedImagePath}}" class="linkedin-btn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?text=http://127.0.0.1:5000/imageGenerator" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="instagram-btn">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div> <!-- End of 3rd column -->
+        </div> <!-- End of row class -->
 
         <!-- Generated Image -->
-        <div class="col gridcol2" >
+        <!-- <div class="col gridcol2" >
             <div class="generated-img-btn">
                 <div>
                     <a href="{{generatedImagePath}}" download="GeneratedImage"   class="generated-img">
@@ -87,8 +112,9 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- <script>src="http://127.0.0.1:8080/main.js"</script> -->
+        </div> -->
+    </div>   <!-- End of container class -->
+    <!-- <script>src="static/main.js"</script> -->
+<!-- </div> -->
 </body>
 </html>
